@@ -16,6 +16,9 @@ export default new VueRouter({
       name: 'Login',
       path: '/login',
       component: Login,
+      meta: {
+        isHide: true,
+      },
     },
     {
       name: 'Search',
@@ -26,6 +29,9 @@ export default new VueRouter({
       name: 'Register',
       path: '/register',
       component: Register,
+      meta: {
+        isHide: true,
+      },
     },
   ],
 })

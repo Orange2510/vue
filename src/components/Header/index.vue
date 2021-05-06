@@ -6,6 +6,7 @@
                      class="header-top-login">登录</router-link>
         <router-link to="/register">
         </router-link>
+        <router-link to="/register">免费注册</router-link>
       </p>
 
       <nav class="header-top-nav">
@@ -41,10 +42,13 @@
         <router-link to="/"><img src="./logo.png"
                alt="logo" /></router-link>
       </h1>
-      <form class="header-bottom-form">
+      <form class="header-bottom-form"
+            @submit.prevent='goSearch'>
         <input class="header-bottom-input"
-               type="text" />
-        <button class="header-bottom-btn">搜索</button>
+               type="text"
+               v-model="keyword" />
+        <button class="header-bottom-btn"
+                type="submit">搜索</button>
       </form>
     </div>
   </header>
@@ -53,6 +57,19 @@
 <script>
 export default {
   name: "Header",
+  data () {
+    return {
+      keyword: '',
+    }
+  },
+  methods: {
+    goSearch () {
+      console.log(this.keyword);
+      this.$router.history.push({
+        name: 'Search',
+      })
+    }
+  }
 };
 </script>
 
