@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 345345,
+      "username": "zhaoliu",
+      "nickname": "xiaoliu",
+      "password": "123456",
+      "createdTime": 1618904804660,
+      "updatedTime": 1618904804660
+    },
+    {
+      "id": 345,
+      "username": "zhaoliu",
+      "nickname": "xiaoliu",
+      "password": "123456",
+      "createdTime": 1618904804660,
+      "updatedTime": 1618904804660
+    },
+    {
+      "id": 111234,
+      "username": "zhaoliu",
+      "nickname": "xiaoliu",
+      "password": "123456",
+      "createdTime": 1618904804660,
+      "updatedTime": 1618904804660
+    }
+  ]
+}
