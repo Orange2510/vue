@@ -23,7 +23,8 @@
             <h3>
               <a :data-categoryName="h1.categoryName"
                  :data-categoryId="h1.categoryId"
-                 :data-level='1'>{{h1.categoryName}}</a>
+                 :data-level='1'
+                 href="">{{h1.categoryName}}</a>
             </h3>
             <!-- 二级分类 -->
             <div class="item-list clearfix">
@@ -44,7 +45,8 @@
                         :key="h3.categoryId">
                       <a :data-categoryName="h3.categoryName"
                          :data-categoryId="h3.categoryId"
-                         :data-level='3'>{{h3.categoryName}}</a>
+                         :data-level='3'
+                         href="">{{h3.categoryName}}</a>
                     </em>
                   </dd>
                 </dl>
