@@ -65,6 +65,7 @@ export default {
       categoryList: [],
     }
   },
+  // 发送请求获取数据
   async mounted () {
     try {
       const res = await this.$API.home.reqGetBaseCategoryList()
@@ -74,13 +75,18 @@ export default {
     }
   },
   methods: {
+    // 实现事件委托
     goSearch (e) {
+      // 获取当前点击元素的自定义属性
       const { categoryid, categoryname, level } = e.target.dataset
+      // 点击非自定义属性禁止跳转
       if (!level) {
         return
       }
+      // 编程式导航跳转
       this.$router.history.push({
         name: 'Search',
+        // query参数会添加到url中
         query: {
           categoryName: categoryname,
           [`category${level}Id`]: categoryid,
