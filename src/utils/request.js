@@ -35,6 +35,7 @@ request.interceptors.response.use(
     // 进度条结束
     NProgress.done()
     if (response.data.code) {
+      // console.log(response)
       return response.data.data
     }
     // 功能失败返回promise触发catch
@@ -46,6 +47,7 @@ request.interceptors.response.use(
     NProgress.done()
     // error.response有值代表响应回来
     if (error.response) {
+      console.log(error)
       return Promise.reject(
         errorMessages[error.response.status] || '未知错误，请联系管理员解决'
       )

@@ -6,12 +6,17 @@ import TypeNav from './components/TypeNav'
 
 import router from './router'
 import store from './store'
+
+import * as API from './api'
+
 import './assets/css/normalize.css'
 
 Vue.config.productionTip = false
 
 Vue.component('Footer', Footer)
 Vue.component('TypeNav', TypeNav)
+
+Vue.prototype.$API = API
 
 new Vue({
   router,
