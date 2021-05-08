@@ -91,6 +91,13 @@
 <script>
 export default {
   name: 'ListContainer',
+  async mounted () {
+    // 发送请求模拟数据
+    const banners = await this.$API.mock.reqGetBanners()
+    const data = await this.$API.mock.reqGetData()
+    console.log(banners);
+    console.log(data);
+  }
 }
 </script>
 
