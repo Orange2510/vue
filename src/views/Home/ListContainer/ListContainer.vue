@@ -3,7 +3,7 @@
     <div class="sortList clearfix">
       <div class="center">
         <!--banner轮播-->
-        <Carousel />
+        <Carousel :carouselList='banners' />
       </div>
       <div class="right">
         <div class="news">
@@ -91,12 +91,18 @@
 <script>
 export default {
   name: 'ListContainer',
+  data () {
+    return {
+      banners: [],
+    }
+  },
   async mounted () {
     // 发送请求模拟数据
-    const banners = await this.$API.mock.reqGetBanners()
-    const data = await this.$API.mock.reqGetData()
-    console.log(banners);
-    console.log(data);
+    this.banners = await this.$API.mock.reqGetBanners()
+    // 测试
+    // const data = await this.$API.mock.reqGetData()
+    // console.log(this.banners);
+    // console.log(data);
   }
 }
 </script>

@@ -5,18 +5,21 @@
        @mouseleave="swiper[0].autoplay.start()">
     <!-- 轮播图容器 -->
     <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="./images/banner1.jpg" />
+      <div class="swiper-slide"
+           v-for="img in carouselList"
+           :key="img.id">
+        <img :src="img.imgUrl"
+             :alt="img.title" />
+      </div>
+      <!-- <div class="swiper-slide">
+        <img src="../../../public/images/banner1.jpg" />
       </div>
       <div class="swiper-slide">
-        <img src="./images/banner2.jpg" />
+        <img src="../../../public/images/banner2.jpg" />
       </div>
       <div class="swiper-slide">
-        <img src="./images/banner3.jpg" />
-      </div>
-      <div class="swiper-slide">
-        <img src="./images/banner4.jpg" />
-      </div>
+        <img src="../../../public/images/banner3.jpg" />
+      </div> -->
     </div>
     <!-- 左右按钮 -->
     <div class="swiper-button-next"></div>
@@ -32,21 +35,31 @@ import 'swiper/css/swiper.min.css'
 
 export default {
   name: "Carousel",
-  mounted () {
-    this.swiper = new Swiper(".swiper-container", {
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      pagination: {
-        el: ".swiper-pagination",
-      },
-      loop: true,
-      autoplay: {
-        delay: 1000,
-      },
-    });
+  props: {
+    carouselList: Array,
   },
+  watch: {
+    carouselList () {
+      // 监视数据回来了触发函数，数据回来但还未渲染DOM元素
+      // this.$nextTick 等DOM元素渲染完成才触发回调
+      this.$nextTick(() => {
+        this.swiper = new Swiper(".swiper-container", {
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          pagination: {
+            el: ".swiper-pagination",
+          },
+          loop: true,
+          autoplay: {
+            delay: 1000,
+          },
+        });
+      })
+    }
+  },
+
 }
 </script>
 
