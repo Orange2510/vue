@@ -11,15 +11,6 @@
         <img :src="img.imgUrl"
              :alt="img.title" />
       </div>
-      <!-- <div class="swiper-slide">
-        <img src="../../../public/images/banner1.jpg" />
-      </div>
-      <div class="swiper-slide">
-        <img src="../../../public/images/banner2.jpg" />
-      </div>
-      <div class="swiper-slide">
-        <img src="../../../public/images/banner3.jpg" />
-      </div> -->
     </div>
     <!-- 左右按钮 -->
     <div class="swiper-button-next"></div>

@@ -11,9 +11,9 @@
     <!-- 猜你喜欢 -->
     <Like />
     <!--楼层-->
-    <Floor />
-    <!--楼层-->
-    <Floor />
+    <Floor v-for="floor in floors"
+           :key="floor.id"
+           :floor='floor' />
     <!--商标-->
     <Brand />
   </div>
@@ -37,6 +37,14 @@ export default {
     Rank,
     TodayRecommend,
     Header,
+  },
+  data () {
+    return {
+      floors: [],
+    }
+  },
+  async mounted () {
+    this.floors = await this.$API.mock.reqGetFloor()
   }
 }
 </script>

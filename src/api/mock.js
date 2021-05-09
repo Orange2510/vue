@@ -7,9 +7,15 @@ export default {
       method: 'GET',
     })
   },
-  reqGetData() {
+  // reqGetData() {
+  //   return mockRequest({
+  //     url: '/getData',
+  //     method: 'GET',
+  //   })
+  // },
+  reqGetFloor() {
     return mockRequest({
-      url: '/getData',
+      url: '/floor',
       method: 'GET',
     })
   },
