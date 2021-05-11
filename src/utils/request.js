@@ -8,7 +8,7 @@ import 'nprogress/nprogress.css'
 // 5.友好提示错误
 // 6.请求进度提示
 const request = axios.create({
-  baseURL: 'http://39.98.123.211/api',
+  baseURL: '/api',
   timeout: 10000,
 })
 const errorMessages = {
