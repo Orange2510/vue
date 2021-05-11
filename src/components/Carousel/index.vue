@@ -1,8 +1,9 @@
 <template>
   <!-- swiper外层容器 -->
-  <div class="swiper-container"
-       @mouseenter="swiper[0].autoplay.stop()"
-       @mouseleave="swiper[0].autoplay.start()">
+  <div ref="container"
+       class="swiper-container"
+       @mouseenter="swiper.autoplay.stop()"
+       @mouseleave="swiper.autoplay.start()">
     <!-- 轮播图容器 -->
     <div class="swiper-wrapper">
       <div class="swiper-slide"
@@ -29,25 +30,33 @@ export default {
   props: {
     carouselList: Array,
   },
+
   watch: {
-    carouselList () {
-      // 监视数据回来了触发函数，数据回来但还未渲染DOM元素
-      // this.$nextTick 等DOM元素渲染完成才触发回调
-      this.$nextTick(() => {
-        this.swiper = new Swiper(".swiper-container", {
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-          pagination: {
-            el: ".swiper-pagination",
-          },
-          loop: true,
-          autoplay: {
-            delay: 1000,
-          },
-        });
-      })
+    carouselList: {
+      immediate: true,
+      handler (newVal) {
+        if (!newVal.length) {
+          return
+        }
+        console.log(1);
+        // 监视数据回来了触发函数，数据回来但还未渲染DOM元素
+        // this.$nextTick 等DOM元素渲染完成才触发回调
+        this.$nextTick(() => {
+          this.swiper = new Swiper(this.$refs.container, {
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+              el: ".swiper-pagination",
+            },
+            loop: true,
+            autoplay: {
+              delay: 1000,
+            },
+          });
+        })
+      }
     }
   },
 
