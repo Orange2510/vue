@@ -64,10 +64,21 @@ export default {
   },
   methods: {
     goSearch () {
-      console.log(this.keyword);
-      this.$router.history.push({
+      const { keyword } = this
+      // 点击跳Search页面
+      let location = {
         name: 'Search',
-      })
+      }
+      // 判断用户是否输入值，有则加入路由参数params
+      if (keyword) {
+        location.params = {
+          keyword,
+        }
+      }
+      // 在有query参数的前提下加上params参数不会被覆盖
+      location.query = this.$route.query
+      // 点击事件跳转搜索页面 
+      this.$router.history.push(location)
     }
   }
 };

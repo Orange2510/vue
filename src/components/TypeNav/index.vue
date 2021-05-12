@@ -87,15 +87,22 @@ export default {
       if (!level) {
         return
       }
-      // 编程式导航跳转
-      this.$router.history.push({
+      let location = {
         name: 'Search',
         // query参数会添加到url中
         query: {
           categoryName: categoryname,
           [`category${level}Id`]: categoryid,
         }
-      })
+      }
+      // query和params更新不会被覆盖
+      const { keyword } = this.$route.params
+      // 判断用户是否输入值，有则加入路由参数params 
+      if (keyword) {
+        location.params = { keyword }
+      }
+      // 编程式导航跳转
+      this.$router.history.push(location)
     }
   },
 }
