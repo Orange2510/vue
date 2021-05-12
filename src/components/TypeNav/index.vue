@@ -60,23 +60,25 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'TypeNav',
-  data () {
-    return {
-      categoryList: [],
-    }
+
+  computed: {
+    ...mapState({
+      categoryList: state => state.home.categoryList
+    })
   },
-  // 发送请求获取数据
-  async mounted () {
-    try {
-      const res = await this.$API.home.reqGetBaseCategoryList()
-      this.categoryList = res.slice(0, 16)
-    } catch (err) {
-      console.log(err);
-    }
+  // 发送请求获取数据 
+  mounted () {
+    // 方法一
+    // this['home/getBaseCategoryList']()
+    this.getBaseCategoryList()
   },
   methods: {
+    // 方法一
+    // ...mapActions(['home/getBaseCategoryList']),
+    ...mapActions('home', ['getBaseCategoryList']),
     // 实现事件委托
     goSearch (e) {
       // 获取当前点击元素的自定义属性
