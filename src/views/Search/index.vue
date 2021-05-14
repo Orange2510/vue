@@ -20,7 +20,7 @@
         </div>
 
         <!-- 商品品牌和商品属性 -->
-        <SearchSelector />
+        <SearchSelector :goSearch='goSearch' />
 
         <!-- 排序、商品列表、分页器 -->
         <div class="details clearfix">
@@ -383,6 +383,22 @@ import SearchSelector from './SearchSelector/SearchSelector'
 import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Search',
+  data () {
+    return {
+      options: {
+        // 品牌
+        trademark: [],
+        // 属性
+        props: [],
+        // 页数
+        pageSize: 5,
+        // 页码
+        pageNo: 1,
+        // 排序
+        order: '',
+      }
+    }
+  },
   computed: {
     ...mapState({
       trademarkList: state => state.search.trademarkList,
@@ -393,12 +409,32 @@ export default {
   },
   methods: {
     ...mapActions("search", ['searchGoodList']),
-    goSearch () {
+    // newOptions增加初始值
+    goSearch (newOptions = {}) {
       const { params, query } = this.$route
+      // 更新搜索条件,利用对象后加的覆盖前面的
+      const options = {
+        ...this.options,
+        ...newOptions,
+      }
+      // 判断有没有新增的属性
+      if (newOptions.prop) {
+        // 把新增的属性添加到options
+        options.props.push(newOptions.prop)
+        // 删除已添加数据
+        delete options.prop
+      }
+      // 方便下次
+      this.options = options
       this.searchGoodList({
+        // keyword
         ...params,
+        // categoryName
         ...query,
+        // props trademark order pageNo pageSize
+        ...newOptions,
       })
+
     }
   },
   mounted () {

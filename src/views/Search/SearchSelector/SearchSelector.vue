@@ -3,10 +3,12 @@
     <div class="type-wrap logo">
       <div class="fl key brand">品牌</div>
       <div class="value logos">
-        <ul class="logo-list">
+        <ul class="logo-list"
+            @click='searchTrademark'>
           <!-- 遍历品牌 -->
           <li v-for="trademark in trademarkList"
-              :key="trademark.tmId">{{trademark.tmName}}</li>
+              :key="trademark.tmId"
+              :data-trademark="`${trademark.tmId}:${trademark.tmName}`">{{trademark.tmName}} </li>
         </ul>
       </div>
       <div class="ext">
@@ -15,16 +17,18 @@
         <a href="javascript:void(0);">更多</a>
       </div>
     </div>
-    <!-- 遍历品牌选项 -->
+    <!-- 遍历品牌属性 -->
     <div class="type-wrap"
          v-for="attrs in attrsList"
          :key="attrs.attrId">
       <div class="fl key">{{attrs.attrName}}</div>
       <div class="fl value">
-        <ul class="type-list">
+        <ul class="type-list"
+            @click="searchProps">
           <li v-for="(attrValue,index) in attrs.attrValueList"
               :key="index">
-            <a>{{attrValue}}</a>
+            <!-- 事件委托的目标元素必须在最里面的 -->
+            <a :data-prop='`${attrs.attrId}:${attrValue}:${attrs.attrName}`'>{{attrValue}}</a>
           </li>
         </ul>
       </div>
@@ -37,14 +41,30 @@
 import { mapState } from 'vuex'
 export default {
   name: 'SearchSelector',
+  props: {
+    goSearch: Function,
+  },
   computed: {
     ...mapState({
       attrsList: state => state.search.attrsList,
       trademarkList: state => state.search.trademarkList
     })
   },
-  mounted () {
-    console.log(this.trademarkList);
+  methods: {
+    searchTrademark (e) {
+      const { trademark } = e.target.dataset
+      // 防止点击空白区域
+      if (!trademark) return
+      this.goSearch({ trademark })
+    },
+    searchProps (e) {
+      const { prop } = e.target.dataset
+      // 防止点击空白区域
+      if (!prop) return
+      this.goSearch({ prop })
+      // console.log(e.target.dataset);
+    }
+
   }
 }
 </script>
