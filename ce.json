@@ -1,0 +1,277 @@
+{
+  "code": 200,
+  "message": "成功",
+  "data": {
+    "trademarkList": [
+      {
+        "tmId": 3,
+        "tmName": "华为"
+      },
+      {
+        "tmId": 2,
+        "tmName": "苹果"
+      },
+      {
+        "tmId": 5,
+        "tmName": "小米"
+      },
+      {
+        "tmId": 4,
+        "tmName": "TCL"
+      },
+      {
+        "tmId": 11,
+        "tmName": "香奈儿"
+      },
+      {
+        "tmId": 8,
+        "tmName": "索芙特"
+      },
+      {
+        "tmId": 9,
+        "tmName": "CAREMiLLE"
+      },
+      {
+        "tmId": 8878,
+        "tmName": "咕噜咕噜nico~"
+      },
+      {
+        "tmId": 6,
+        "tmName": "长粒香"
+      },
+      {
+        "tmId": 7,
+        "tmName": "金沙河"
+      }
+    ],
+    "attrsList": [
+      {
+        "attrId": 3383,
+        "attrValueList": ["金色", "64g", "128g"],
+        "attrName": "小米"
+      },
+      {
+        "attrId": 3490,
+        "attrValueList": ["第三个的"],
+        "attrName": "分公司"
+      },
+      {
+        "attrId": 3492,
+        "attrValueList": ["且为且且"],
+        "attrName": "且为"
+      },
+      {
+        "attrId": 106,
+        "attrValueList": ["安卓手机"],
+        "attrName": "手机一级"
+      },
+      {
+        "attrId": 2933,
+        "attrValueList": ["7以上", "4.0-4.7", "5.0-5.5", "6.0-6.8"],
+        "attrName": "屏幕尺寸"
+      },
+      {
+        "attrId": 2934,
+        "attrValueList": ["黑", "琉璃彩"],
+        "attrName": "颜色"
+      },
+      {
+        "attrId": 1609,
+        "attrValueList": ["平台属性2", "平台属性3", "平台属性1"],
+        "attrName": "平台属性"
+      },
+      {
+        "attrId": 2932,
+        "attrValueList": ["美版", "国行", "港版"],
+        "attrName": "版本"
+      },
+      {
+        "attrId": 2269,
+        "attrValueList": ["222", "5263"],
+        "attrName": "111"
+      },
+      {
+        "attrId": 2270,
+        "attrValueList": ["444", "555"],
+        "attrName": "333"
+      }
+    ],
+    "goodsList": [
+      {
+        "id": 5,
+        "defaultImg": "http://47.93.148.192:8080/group1/M00/00/01/rBHu8l-rgJqAHPnoAAF9hoDNfsc505.jpg",
+        "title": "Redmi 10X 4G Helio G85游戏芯 4800万超清四摄 5020mAh大电量 小孔全面屏 128GB大存储 4GB+128GB 明月灰 游戏智能手机 小米 红米",
+        "price": 999.0,
+        "createTime": null,
+        "tmId": null,
+        "tmName": null,
+        "category1Id": null,
+        "category1Name": null,
+        "category2Id": null,
+        "category2Name": null,
+        "category3Id": null,
+        "category3Name": null,
+        "hotScore": 0,
+        "attrs": null
+      },
+      {
+        "id": 546,
+        "defaultImg": "19",
+        "title": "123",
+        "price": 123.0,
+        "createTime": null,
+        "tmId": null,
+        "tmName": null,
+        "category1Id": null,
+        "category1Name": null,
+        "category2Id": null,
+        "category2Name": null,
+        "category3Id": null,
+        "category3Name": null,
+        "hotScore": 0,
+        "attrs": null
+      },
+      {
+        "id": 303,
+        "defaultImg": "http://47.93.148.192:8080/group1/M00/00/28/rBHu8mAZPSOAf_CjAAGKzgw2-5Q932.jpg",
+        "title": "12333",
+        "price": 123.0,
+        "createTime": null,
+        "tmId": null,
+        "tmName": null,
+        "category1Id": null,
+        "category1Name": null,
+        "category2Id": null,
+        "category2Name": null,
+        "category3Id": null,
+        "category3Name": null,
+        "hotScore": 0,
+        "attrs": null
+      },
+      {
+        "id": 191,
+        "defaultImg": "http://47.93.148.192:8080/group1/M00/00/27/rBHu8mAYrJCAAZCjAAn7apFRTaU874.jpg",
+        "title": "本地砂糖桔",
+        "price": 10.0,
+        "createTime": null,
+        "tmId": null,
+        "tmName": null,
+        "category1Id": null,
+        "category1Name": null,
+        "category2Id": null,
+        "category2Name": null,
+        "category3Id": null,
+        "category3Name": null,
+        "hotScore": 0,
+        "attrs": null
+      },
+      {
+        "id": 24,
+        "defaultImg": "http://47.93.148.192:8080/group1/M00/00/02/rBHu8l-0l72AKuQVAALmOIO3U5M856.jpg",
+        "title": "金沙河面条 原味银丝挂面 龙须面 方便速食拉面 清汤面 900g",
+        "price": 11.0,
+        "createTime": null,
+        "tmId": null,
+        "tmName": null,
+        "category1Id": null,
+        "category1Name": null,
+        "category2Id": null,
+        "category2Name": null,
+        "category3Id": null,
+        "category3Name": null,
+        "hotScore": 0,
+        "attrs": null
+      },
+      {
+        "id": 422,
+        "defaultImg": "http://47.93.148.192:8080/group1/M00/00/59/rBHu8mBbGHCAY5WxAACx4Sdkeiw155.jpg",
+        "title": "Redmi K40 Pro",
+        "price": 99999.0,
+        "createTime": null,
+        "tmId": null,
+        "tmName": null,
+        "category1Id": null,
+        "category1Name": null,
+        "category2Id": null,
+        "category2Name": null,
+        "category3Id": null,
+        "category3Name": null,
+        "hotScore": 0,
+        "attrs": null
+      },
+      {
+        "id": 465,
+        "defaultImg": "http://47.93.148.192:8080/group1/M00/00/5B/rBHu8mBbKzyACEqsAABw5urd8aM374.jpg",
+        "title": "你不知道的JavaScript",
+        "price": 89.0,
+        "createTime": null,
+        "tmId": null,
+        "tmName": null,
+        "category1Id": null,
+        "category1Name": null,
+        "category2Id": null,
+        "category2Name": null,
+        "category3Id": null,
+        "category3Name": null,
+        "hotScore": 0,
+        "attrs": null
+      },
+      {
+        "id": 522,
+        "defaultImg": "http://47.93.148.192:8080/group1/M00/00/02/rBHu8l-sklWAQwdLAACW7swImE4752.jpg",
+        "title": "111",
+        "price": 1.0,
+        "createTime": null,
+        "tmId": null,
+        "tmName": null,
+        "category1Id": null,
+        "category1Name": null,
+        "category2Id": null,
+        "category2Name": null,
+        "category3Id": null,
+        "category3Name": null,
+        "hotScore": 0,
+        "attrs": null
+      },
+      {
+        "id": 426,
+        "defaultImg": "http://47.93.148.192:8080/group1/M00/00/59/rBHu8mBbGG2AMK9NAADxHgZNCpY824.jpg",
+        "title": "Redmi K40 ProRedmi K40 Pro",
+        "price": 3333.0,
+        "createTime": null,
+        "tmId": null,
+        "tmName": null,
+        "category1Id": null,
+        "category1Name": null,
+        "category2Id": null,
+        "category2Name": null,
+        "category3Id": null,
+        "category3Name": null,
+        "hotScore": 0,
+        "attrs": null
+      },
+      {
+        "id": 447,
+        "defaultImg": "http://47.93.148.192:8080/group1/M00/00/26/rBHu8mAX--mAHBlCAAAnFlzeCNQ778.jpg",
+        "title": "电池电池",
+        "price": 999.0,
+        "createTime": null,
+        "tmId": null,
+        "tmName": null,
+        "category1Id": null,
+        "category1Name": null,
+        "category2Id": null,
+        "category2Name": null,
+        "category3Id": null,
+        "category3Name": null,
+        "hotScore": 0,
+        "attrs": null
+      }
+    ],
+    "total": 299,
+    "pageSize": 10,
+    "pageNo": 1,
+    "totalPages": 30
+  },
+  "ok": true
+}

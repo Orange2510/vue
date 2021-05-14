@@ -38,7 +38,6 @@ export default {
         if (!newVal.length) {
           return
         }
-        console.log(1);
         // 监视数据回来了触发函数，数据回来但还未渲染DOM元素
         // this.$nextTick 等DOM元素渲染完成才触发回调
         this.$nextTick(() => {
