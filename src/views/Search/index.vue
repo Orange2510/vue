@@ -20,7 +20,9 @@
         </div>
 
         <!-- 商品品牌和商品属性 -->
-        <SearchSelector :goSearch='goSearch' />
+        <SearchSelector :goSearch='goSearch'
+                        :isSearchTrademark='options.trademark'
+                        :isSearchProps='options.props' />
 
         <!-- 排序、商品列表、分页器 -->
         <div class="details clearfix">
@@ -128,7 +130,7 @@ export default {
     return {
       options: {
         // 品牌
-        trademark: [],
+        trademark: '',
         // 属性
         props: [],
         // 页数
@@ -162,7 +164,7 @@ export default {
         // 删除已添加数据
         delete options.prop
       }
-      // 方便下次
+      // 保存上次搜索
       this.options = options
       this.searchGoodList({
         // keyword

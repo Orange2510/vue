@@ -43,6 +43,8 @@ export default {
   name: 'SearchSelector',
   props: {
     goSearch: Function,
+    isSearchTrademark: String,
+    isSearchProps: Array,
   },
   computed: {
     ...mapState({
@@ -52,17 +54,22 @@ export default {
   },
   methods: {
     searchTrademark (e) {
+      // 获取自定义属性
       const { trademark } = e.target.dataset
       // 防止点击空白区域
-      if (!trademark) return
+      // this.isSearchTrademark 代表上一次搜索的品牌
+      if (this.isSearchTrademark || !trademark) return
       this.goSearch({ trademark })
     },
     searchProps (e) {
+      // 获取自定义属性
       const { prop } = e.target.dataset
       // 防止点击空白区域
-      if (!prop) return
+      // props 多选不可重复
+      // this.isSearchProps 代表上一次搜索的属性
+      if (this.isSearchProps.find(item => item === prop) || !prop) return
       this.goSearch({ prop })
-      // console.log(e.target.dataset);
+      console.log(prop);
     }
 
   }
