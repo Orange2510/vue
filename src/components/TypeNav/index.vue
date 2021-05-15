@@ -78,7 +78,6 @@ export default {
   },
   // 发送请求获取数据 
   mounted () {
-    
     // 方法一
     // this['home/getBaseCategoryList']()
     this.getBaseCategoryList()
