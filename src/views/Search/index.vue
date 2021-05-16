@@ -12,10 +12,10 @@
             </li>
           </ul>
           <ul class="fl sui-tag">
-            <li class="with-x">手机</li>
-            <li class="with-x">iphone<i>×</i></li>
-            <li class="with-x">华为<i>×</i></li>
-            <li class="with-x">OPPO<i>×</i></li>
+            <li class="with-x">手机<i class="iconfont icon-close-bold"></i></li>
+            <li class="with-x">iphone<i class="iconfont icon-close-bold"></i></li>
+            <li class="with-x">华为<i class="iconfont icon-close-bold"></i></li>
+            <li class="with-x">OPPO<i class="iconfont icon-close-bold"></i></li>
           </ul>
         </div>
 
@@ -42,10 +42,10 @@
                   <a href="#">评价</a>
                 </li>
                 <li>
-                  <a href="#">价格⬆</a>
+                  <a href="#">价格<i class="iconfont icon-direction-up"></i></a>
                 </li>
                 <li>
-                  <a href="#">价格⬇</a>
+                  <a href="#">价格<i class="iconfont icon-direction-down"></i></a>
                 </li>
               </ul>
             </div>
