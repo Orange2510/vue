@@ -59,7 +59,7 @@ export default {
   name: "Header",
   data () {
     return {
-      keyword: '',
+      keyword: this.$route.params.keyword || '',
     }
   },
   methods: {

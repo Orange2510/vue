@@ -151,7 +151,6 @@ export default {
     ...mapActions("search", ['searchGoodList']),
     // newOptions增加初始值
     goSearch (newOptions = {}) {
-      // console.log(this.$route);
       const { params, query } = this.$route
       // 更新搜索条件,利用对象后加的覆盖前面的
       const options = {
@@ -181,9 +180,12 @@ export default {
   watch: {
     // 搜索功能的共同的是url地址
     // url地址变化就发送请求更新数据实现搜索功能
-    $route () {
-      this.goSearch()
-    }
+    $route: {
+      immediate: true,
+      handler: function () {
+        this.goSearch()
+      }
+    },
   },
   components: {
     SearchSelector,
