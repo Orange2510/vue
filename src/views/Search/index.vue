@@ -8,7 +8,7 @@
         <div class="bread">
           <ul class="fl sui-breadcrumb">
             <li>
-              <a href="#">全部结果</a>
+              <a>全部结果</a>
             </li>
           </ul>
           <ul class="fl sui-tag">
@@ -42,23 +42,26 @@
           <div class="sui-navbar">
             <div class="navbar-inner filter">
               <ul class="sui-nav">
-                <li class="active">
-                  <a href="#">综合</a>
+                <li :class="{active: order[0] === '1'}"
+                    @click="setOrder('1')">
+                  <a>综合
+                    <i v-show="order[0]=== '1' "
+                       :class="['iconfont', `icon-direction-${order[1] === 'asc' ? 'up' : 'down'}`]"></i>
+                  </a>
                 </li>
                 <li>
-                  <a href="#">销量</a>
+                  <a>销量</a>
                 </li>
                 <li>
-                  <a href="#">新品</a>
+                  <a>新品</a>
                 </li>
                 <li>
-                  <a href="#">评价</a>
+                  <a>评价</a>
                 </li>
-                <li>
-                  <a href="#">价格<i class="iconfont icon-direction-up"></i></a>
-                </li>
-                <li>
-                  <a href="#">价格<i class="iconfont icon-direction-down"></i></a>
+                <li :class="{active: order[0] === '2'}"
+                    @click="setOrder('2')">
+                  <a>价格<i :class="['iconfont', `icon-direction-${order[1] === 'asc' ? 'up' : 'down'}`]"
+                       v-show="order[0]=== '2' "></i></a>
                 </li>
               </ul>
             </div>
@@ -102,26 +105,26 @@
             <div class="sui-pagination clearfix">
               <ul>
                 <li class="prev disabled">
-                  <a href="#">«上一页</a>
+                  <a>«上一页</a>
                 </li>
                 <li class="active">
-                  <a href="#">1</a>
+                  <a>1</a>
                 </li>
                 <li>
-                  <a href="#">2</a>
+                  <a>2</a>
                 </li>
                 <li>
-                  <a href="#">3</a>
+                  <a>3</a>
                 </li>
                 <li>
-                  <a href="#">4</a>
+                  <a>4</a>
                 </li>
                 <li>
-                  <a href="#">5</a>
+                  <a>5</a>
                 </li>
                 <li class="dotted"><span>...</span></li>
                 <li class="next">
-                  <a href="#">下一页»</a>
+                  <a>下一页»</a>
                 </li>
               </ul>
               <div><span>共10页&nbsp;</span></div>
@@ -150,15 +153,18 @@ export default {
         pageSize: 5,
         // 页码
         pageNo: 1,
-        // 排序
-        order: '',
-      }
+        // 1: 综合,2: 价格 asc: 升序,desc: 降序
+        order: "1:desc",
+      },
     }
   },
   computed: {
     ...mapState({
       goodsList: state => state.search.goodsList,
-    })
+    }),
+    order () {
+      return this.options.order.split(':')
+    }
   },
   methods: {
     ...mapActions("search", ['searchGoodList']),
@@ -180,13 +186,14 @@ export default {
       }
       // 保存上次搜索
       this.options = options
+      // 更新商品
       this.searchGoodList({
         // keyword
         ...params,
         // categoryName
         ...query,
         // props trademark order pageNo pageSize
-        ...newOptions,
+        ...options,
       })
     },
     // 格式化数据
@@ -218,6 +225,22 @@ export default {
     delProps (prop) {
       // filter筛选不符合条件的属性
       this.options.props = this.options.props.filter(itme => itme !== prop)
+      this.goSearch()
+    },
+    // 添加排序
+    setOrder (newOrderName) {
+      const [oldOrderName, oldOrderType] = this.order
+
+      let orderType
+      // 判断旧的OrderName === 新的OrderName
+      if (oldOrderName === newOrderName) {
+        // 如果相等即连续点击同一个
+        orderType = oldOrderType === 'asc' ? 'desc' : 'asc'
+      } else {
+        // 否则点击不同的排序
+        orderType = 'desc'
+      }
+      this.options.order = `${newOrderName}:${orderType}`
       this.goSearch()
     },
   },
