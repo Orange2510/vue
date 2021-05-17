@@ -12,10 +12,19 @@
             </li>
           </ul>
           <ul class="fl sui-tag">
-            <li class="with-x">手机<i class="iconfont icon-close-bold"></i></li>
-            <li class="with-x">iphone<i class="iconfont icon-close-bold"></i></li>
-            <li class="with-x">华为<i class="iconfont icon-close-bold"></i></li>
-            <li class="with-x">OPPO<i class="iconfont icon-close-bold"></i></li>
+            <!-- 关键字 -->
+            <li class="with-x"
+                v-if="$route.params.keyword">{{$route.params.keyword}}<i class="iconfont icon-close-bold"></i></li>
+            <!-- 品牌 -->
+            <li class="with-x"
+                v-if="options.trademark">{{options.trademark.split(':')[1]}}<i class="iconfont icon-close-bold"></i></li>
+            <!--分类-->
+            <li class="with-x"
+                v-if="$route.query.categoryName">{{$route.query.categoryName}}<i class="iconfont icon-close-bold"></i></li>
+            <!-- 属性 -->
+            <li class="with-x"
+                v-for="props in options.props"
+                :key="props">{{formatProps(props)}}<i class="iconfont icon-close-bold"></i></li>
           </ul>
         </div>
 
@@ -151,6 +160,7 @@ export default {
     ...mapActions("search", ['searchGoodList']),
     // newOptions增加初始值
     goSearch (newOptions = {}) {
+      console.log(this.$route);
       const { params, query } = this.$route
       // 更新搜索条件,利用对象后加的覆盖前面的
       const options = {
@@ -174,7 +184,10 @@ export default {
         // props trademark order pageNo pageSize
         ...newOptions,
       })
-
+    },
+    formatProps (props) {
+      const arr = props.split(':')
+      return `${arr[2]}:${arr[1]}`
     }
   },
   watch: {
