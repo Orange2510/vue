@@ -14,17 +14,21 @@
           <ul class="fl sui-tag">
             <!-- 关键字 -->
             <li class="with-x"
-                v-if="$route.params.keyword">{{$route.params.keyword}}<i class="iconfont icon-close-bold"></i></li>
+                v-if="$route.params.keyword">{{$route.params.keyword}}<i class="iconfont icon-close-bold"
+                 @click="delKeyword"></i></li>
             <!-- 品牌 -->
             <li class="with-x"
-                v-if="options.trademark">{{options.trademark.split(':')[1]}}<i class="iconfont icon-close-bold"></i></li>
+                v-if="options.trademark">{{options.trademark.split(':')[1]}}<i class="iconfont icon-close-bold"
+                 @click="delTrademark"></i></li>
             <!--分类-->
             <li class="with-x"
-                v-if="$route.query.categoryName">{{$route.query.categoryName}}<i class="iconfont icon-close-bold"></i></li>
+                v-if="$route.query.categoryName">{{$route.query.categoryName}}<i class="iconfont icon-close-bold"
+                 @click="delCategoryName"></i></li>
             <!-- 属性 -->
             <li class="with-x"
                 v-for="props in options.props"
-                :key="props">{{formatProps(props)}}<i class="iconfont icon-close-bold"></i></li>
+                :key="props">{{formatProps(props)}}<i class="iconfont icon-close-bold"
+                 @click="delProps(props)"></i></li>
           </ul>
         </div>
 
@@ -159,8 +163,8 @@ export default {
   methods: {
     ...mapActions("search", ['searchGoodList']),
     // newOptions增加初始值
+    // 搜索
     goSearch (newOptions = {}) {
-      console.log(this.$route);
       const { params, query } = this.$route
       // 更新搜索条件,利用对象后加的覆盖前面的
       const options = {
@@ -185,14 +189,41 @@ export default {
         ...newOptions,
       })
     },
+    // 格式化数据
     formatProps (props) {
       const arr = props.split(':')
       return `${arr[2]}:${arr[1]}`
-    }
+    },
+    // 删除关键字
+    delKeyword () {
+      this.$router.history.push({
+        name: "Search",
+        // 保留原query参数
+        query: this.$route.query,
+      })
+    },
+    // 删除品牌
+    delTrademark () {
+      this.options.trademark = ''
+      this.goSearch()
+    },
+    // 删除分类
+    delCategoryName () {
+      this.$router.history.push({
+        name: "Search",
+        params: this.$route.params
+      })
+    },
+    // 删除属性
+    delProps (prop) {
+      // filter筛选不符合条件的属性
+      this.options.props = this.options.props.filter(itme => itme !== prop)
+      this.goSearch()
+    },
   },
   watch: {
     // 搜索功能的共同的是url地址
-    // url地址变化就发送请求更新数据实现搜索功能
+    // url地址变化就发送请求更新`数据实现搜索功能
     $route: {
       immediate: true,
       handler: function () {
