@@ -4,6 +4,7 @@ import App from './App.vue'
 import Footer from './components/Footer'
 import TypeNav from './components/TypeNav'
 import Carousel from './components/Carousel'
+import Pagination from './components/Pagination'
 //router和vuex
 import router from './router'
 import store from './store'
@@ -20,6 +21,7 @@ Vue.config.productionTip = false
 Vue.component('Footer', Footer)
 Vue.component('Carousel', Carousel)
 Vue.component('TypeNav', TypeNav)
+Vue.component('Pagination', Pagination)
 
 Vue.prototype.$API = API
 

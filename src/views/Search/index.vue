@@ -98,38 +98,10 @@
                   </div>
                 </div>
               </li>
-
             </ul>
           </div>
-          <div class="fr page">
-            <div class="sui-pagination clearfix">
-              <ul>
-                <li class="prev disabled">
-                  <a>«上一页</a>
-                </li>
-                <li class="active">
-                  <a>1</a>
-                </li>
-                <li>
-                  <a>2</a>
-                </li>
-                <li>
-                  <a>3</a>
-                </li>
-                <li>
-                  <a>4</a>
-                </li>
-                <li>
-                  <a>5</a>
-                </li>
-                <li class="dotted"><span>...</span></li>
-                <li class="next">
-                  <a>下一页»</a>
-                </li>
-              </ul>
-              <div><span>共10页&nbsp;</span></div>
-            </div>
-          </div>
+          <Pagination :pageSize="5"
+                      :total='total' />
         </div>
       </div>
     </div>
@@ -161,6 +133,7 @@ export default {
   computed: {
     ...mapState({
       goodsList: state => state.search.goodsList,
+      total: state => state.search.total,
     }),
     order () {
       return this.options.order.split(':')
