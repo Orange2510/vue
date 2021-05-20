@@ -2,16 +2,24 @@
   <div class="pagination">
     <div class="pagination-btns">
       <button><i class="iconfont icon-direction-left"></i></button>
-      <button class="active">1</button>
-      <button class="iconfont icon-elipsis"></button>
-      <button>5</button>
-      <button>6</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button class="iconfont icon-elipsis"></button>
-      <button>{{totalPages}}</button>
-      <button class="iconfont icon-direction-right"></button>
+      <button :class="{active: myCurrentPage === 1}"
+              @click="myCurrentPage = 1">1</button>
+      <button class="iconfont icon-elipsis"
+              v-show="myCurrentPage !== 1"></button>
+      <!-- 6-2+1 =5  五个按钮   2 + index    当前页码 === 当前遍历按钮 -->
+      <button v-for="(num,index) in startEnd.end - startEnd.start + 1"
+              :key="index"
+              :class="{active: myCurrentPage === startEnd.start + index}"
+              @click="myCurrentPage=startEnd.start + index"> {{startEnd.start + index}} </button>
+      <!-- 1 ... 2 3 [4] 5 6 ... 12 -->
+      <button class="iconfont icon-elipsis"
+              v-show="myCurrentPage !== totalPages"></button>
+      <button :class="{active: myCurrentPage === totalPages}"
+              @click="myCurrentPage = totalPages">{{totalPages}}
+      </button>
+      <button class="
+              iconfont
+              icon-direction-right"></button>
     </div>
     <select class="pagination-select"
             v-model="myPageSize">
@@ -30,7 +38,7 @@ export default {
   data () {
     return {
       myPageSize: this.pageSize,
-      myCurrentPage: 10,
+      myCurrentPage: 11,
     }
   },
   props: {
@@ -63,37 +71,37 @@ export default {
 
       const { myCurrentPage, pagerCount, totalPages } = this;
 
+      const MAX_END_VALUE = totalPages - 1
+      const MIDDLE_BTNS_COUNT = pagerCount - 3
       // 特殊情况4
       if (totalPages <= 2) {
         return {
           start: 0,
-          end: 0,
+          end: -1,
         };
       }
-
       // 特殊情况3
-      if (pagerCount <= totalPages) {
+      if (totalPages <= pagerCount) {
         return {
           start: 2,
-          end: totalPages - 1,
+          end: MAX_END_VALUE,
         };
       }
 
       // 计算开始
-      let start = myCurrentPage - (pagerCount - 3) / 2;
+      let start = myCurrentPage - MIDDLE_BTNS_COUNT / 2;
 
       // 特殊情况1
       if (start < 2) {
         start = 2;
       }
-
       // 计算结束
-      let end = start + pagerCount - 3;
+      let end = start + MIDDLE_BTNS_COUNT;
 
       // 特殊情况2
       if (end >= totalPages) {
-        end = totalPages - 1;
-        start = end - (pagerCount - 3);
+        end = MAX_END_VALUE;
+        start = end - MIDDLE_BTNS_COUNT;
       }
 
       return {
